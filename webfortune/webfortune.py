@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # -*- coding: utf-8 -*-
 """
 Created on Fri Sep 19 14:10:46 2014
@@ -37,6 +38,18 @@ def scrape():
     #removing webpage content before and after the fortunes
     fortune_list = fortune_list[starter:ender]
     #printing the random quote each time we run the program
-    print '\n' + fortune_list[randint(0,(len(fortune_list)-1))] + '\n'
+
+    fortune = fortune_list[randint(0,(len(fortune_list)-1))]
+
+    #in class crowdsourced solution for removing parenthetical info about the number of comments a fortune received... and cleaned up a bit by amonmillner
+    x = len(fortune)
+    #treating the string fortune like a list of characters to traverse it looking for an open parenthesis
+    for n in range(x):
+        if fortune[n] == '(':
+            #if found, a new string will be created only from the characters in the fortune string before the open parenthesis
+            truncater = n
+            fortune = fortune[:truncater]
+            break
+    print fortune
 
 scrape()
