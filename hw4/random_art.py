@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+     # -*- coding: utf-8 -*-
 """
 Random_art.py
 
@@ -59,13 +59,13 @@ def remap_interval(val, input_interval_start, input_interval_end, output_interva
     
         TODO: please fill out the rest of this docstring
     """
-    return (1 - (val / (input_interval_end - input_interval_start)))*(output_interval_end - output_interval_start)
+    return (float(val - input_interval_start) / (input_interval_end - input_interval_start)*(output_interval_end - output_interval_start)) + output_interval_start
     
 im = Image.new("RGB",(350,350))
 
-red = build_random_function(4,6)
-green = build_random_function(3,5)
-blue = build_random_function(8,9)
+red = build_random_function(14,18)
+green = build_random_function(15,19)
+blue = build_random_function(15,20)
 pixels = im.load()
 
 for x1 in range(0, 349):
@@ -75,10 +75,10 @@ for x1 in range(0, 349):
         r = evaluate_random_function(red, x, y)
         g = evaluate_random_function(green, x, y)
         b = evaluate_random_function(blue, x, y)
-        r = remap_interval(r, -1, 1, 0, 255)
-        g = remap_interval(g, -1, 1, 0, 255)
-        b = remap_interval(b, -1, 1, 0, 255)
-        pixels[x1,y1]
+        r = int(remap_interval(r, -1, 1, 0, 255))
+        g = int(remap_interval(g, -1, 1, 0, 255))
+        b = int(remap_interval(b, -1, 1, 0, 255))
+        pixels[x1,y1] = (r,g,b)
 
 im.show()
-print 't'
+im.save('example2.png')
