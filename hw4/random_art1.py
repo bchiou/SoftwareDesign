@@ -46,7 +46,7 @@ def evaluate_random_function(f, x, y):
             return y
         
     elif f[0] != prod:
-        return f[0](evaluate_random_function(f[1], x, y))
+        return f[0](pi * evaluate_random_function(f[1], x, y))
     else:
         return evaluate_random_function(f[1], x, y)*evaluate_random_function(f[2], x, y)
 
@@ -58,13 +58,13 @@ def remap_interval(val, input_interval_start, input_interval_end, output_interva
     
         TODO: please fill out the rest of this docstring
     """
-    return (float(val - input_interval_start) / (input_interval_end - input_interval_start)*(output_interval_end - output_interval_start)) + output_interval_start
-    
+    return(output_interval_end-output_interval_start)*float((val-input_interval_start))/float((input_interval_end-input_interval_start))+output_interval_start
+
 im = Image.new("RGB",(350,350))
 
-red = build_random_function(14,18)
-green = build_random_function(15,19)
-blue = build_random_function(15,20)
+red = build_random_function(4,17)
+green = build_random_function(3,18)
+blue = build_random_function(2,20)
 pixels = im.load()
 
 for x1 in range(0, 349):
